@@ -1,9 +1,13 @@
+# Create a complete, clean Valentine page with updated poetic intro
+# and the customized poem that appears after she clicks YES
 
+html_content = """
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Mija ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
@@ -12,17 +16,22 @@
             text-align: center;
             background: linear-gradient(135deg, #ff758c, #ff7eb3);
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 60px 20px;
         }
 
         h1 {
-            margin-top: 100px;
-            font-size: 42px;
+            font-size: 38px;
+            margin-bottom: 20px;
         }
 
         p {
             font-size: 20px;
-            margin: 15px 40px;
+            line-height: 1.7;
+            margin: 15px 20px;
         }
 
         button {
@@ -31,7 +40,7 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            margin: 20px;
+            margin: 20px 15px;
             transition: 0.3s ease;
         }
 
@@ -66,39 +75,42 @@
 </head>
 <body>
 
-<h1>Mija, Will You Be My Valentine? ❤️</h1>
-<p>You are the quiet kind of magic  
-that makes ordinary days feel golden.</p>
+<div class="container" id="mainContent">
+    <h1>Mija, Will You Be My Valentine? ❤️</h1>
 
-<p>And if love is a journey,  
-I want every step of mine to be with you. 💖</p>
+    <p>You are the quiet kind of magic
+    that makes ordinary days feel golden.</p>
 
+    <p>And if love is a journey,
+    I want every step of mine to be with you. 💖</p>
 
-<button class="yes" onclick="sayYes()">YES ❤️</button>
-<button class="no" onmouseover="moveNo(this)">NO 💔</button>
+    <button class="yes" onclick="sayYes()">YES ❤️</button>
+    <button class="no" onmouseover="moveNo(this)">NO 💔</button>
+</div>
 
 <script>
 function sayYes() {
-    document.body.innerHTML = "<h1>Mija ❤️</h1><p>
-You said yes… and my heart hasn’t stopped smiling.
-</p>
+    document.getElementById("mainContent").innerHTML = `
+        <h1>Mija ❤️</h1>
 
-<p>
-You are the calm of rain against mountains,
-the elegance of lilies opening to the sun,
-the softness and loyalty of a penguin in love.
-</p>
+        <p>You said yes… and my heart hasn’t stopped smiling.</p>
 
-<p>
-And if love feels like something wild and beautiful —
-like a horse running free toward its home —
-then I know exactly where my heart belongs.
-</p>
+        <p>
+        You are lilies in bloom — quiet, graceful, unforgettable.<br>
+        You are rain resting gently against mountains — soft, steady, alive.
+        </p>
 
-<p>
-With you. Always. 💗
-</p>
-</h2>";
+        <p>
+        Like penguins that choose one heart and stay,<br>
+        like horses that run free yet always know where home is —<br>
+        my heart keeps choosing you.
+        </p>
+
+        <p>
+        If this is the beginning of our little love story,<br>
+        I can’t wait for every chapter we write together. 💕
+        </p>
+    `;
 }
 
 function moveNo(button) {
@@ -122,3 +134,11 @@ setInterval(createHeart, 400);
 
 </body>
 </html>
+"""
+
+file_path = "/mnt/data/final_mija_valentine_index.html"
+
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+file_path
